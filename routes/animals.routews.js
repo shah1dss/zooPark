@@ -21,4 +21,5 @@ router.get('/', async (req, res) => {
   return res.render('animal', { animals, links });
 });
 
+
 module.exports = router;
