@@ -1,31 +1,32 @@
 <script defer src="/js/admin/animals.js"></script>
 
-<div class="container col-4">
-  <form id="card-form" action="/admin/animals/">
-    <div class="mb-3">
-      <label class="form-label">Название</label>
-      <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Фото</label>
-      <input type="text" name="photo" class="form-control" autocomplete="off">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Описание</label>
-      <input type="text" name="description" class="form-control" autocomplete="off">
-    </div>
-    <div id="error-div"></div>
-    <div>
-      <button type="submit" class="btn btn-primary">Добавить</button>
-  </form>
+<div class="container d-flex">
+  <div>
+    <form id="card-form" action="/admin/animals/">
+      <div class="mb-3">
+        <label class="form-label">Название</label>
+        <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Фото</label>
+        <input type="text" name="photo" class="form-control" autocomplete="off">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Описание</label>
+        <input type="text" name="description" class="form-control" autocomplete="off">
+      </div>
+      <div id="error-div"></div>
+      <div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+  </div>
+  <div id="list-animals-div" >
+    {{#each allAnimals}}
+    <li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}</li>
+    <a class="btn btn-primary">Редактировать</a>
+    <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a>
+    {{/each}}
+  </div>
 </div>
 
-<div id="list-animals-div">
 
-  {{#each allAnimals}}
-  <li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}</li>
-  <a class="btn btn-primary">Редактировать</a>
-  <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a>
-  {{/each}}
-
-</div>
