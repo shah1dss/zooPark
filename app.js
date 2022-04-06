@@ -20,7 +20,6 @@ app.use('/animals', animalsRoutes);
 app.use('/admin', adminRoutes);
 app.use('/admin/animals', animalsRouter);
 
-
 app.listen(3000, () => {
   console.log('Server start ))');
 });
