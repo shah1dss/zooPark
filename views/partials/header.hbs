@@ -1,27 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Урюпинский зоопарк</a>
-    {{!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    {{!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> --}}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Животные</a>
+          <a class="nav-link active" aria-current="page" href="/animals">Животные</a>
         </li>
-                <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Информация</a>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/info">Информация</a>
         </li>
 
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Тарифы
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown_id">
+            <li><button class="dropdown-item" id="weekday_id">Будние дни</button></li>
+            <li><a class="dropdown-item" id="weekend_id">Выходные дни</a></li>
           </ul>
+        </li>
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+        </li> --}}
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/animals">изменения животных</a></li>
+            <li><a class="dropdown-item" href="/admin/tarif">изменения тарифов</a></li>
+          </ul>
+
         </li>
 
       </ul>
