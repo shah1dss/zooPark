@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({LinkImg}) {
-      Animal.hasMany(LinkImg, {foreignKey: 'animal_id'})
+    static associate({ LinkImg }) {
+      Animal.hasMany(LinkImg, { foreignKey: 'animal_id' })
     }
   }
   Animal.init({
@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    photo: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
