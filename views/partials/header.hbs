@@ -22,13 +22,26 @@
             aria-expanded="false">
             Тарифы
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown_id">
+            <li><button class="dropdown-item" id="weekday_id">Будние дни</button></li>
+            <li><a class="dropdown-item" id="weekend_id">Выходные дни</a></li>
           </ul>
         </li>
 
-        <li class="nav-item">
+        {{!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+        </li> --}}
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/animals">изменения животных</a></li>
+            <li><a class="dropdown-item" href="/admin/tarif">изменения тарифов</a></li>
+          </ul>
+
         </li>
 
       </ul>

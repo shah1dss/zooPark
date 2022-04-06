@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Animal, LinkImg } = require('../db/models')
+const { Animal, LinkImg } = require('../db/models');
 
 router.get('/', async (req, res) => {
   let animals;
