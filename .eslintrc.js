@@ -12,6 +12,5 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'no-console': 0,
   },
 };

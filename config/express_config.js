@@ -26,9 +26,7 @@ module.exports = function config(app) {
   app.use(express.json());
   app.set('views', path.join(process.env.PWD, 'views'));
   hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'));
-
-  hbs.registerHelper('currentYear', ()=> `ZooPark ${new Date().getFullYear()}`);
-  app.use(express.static(path.join(process.env.PWD, 'public')));
+  hbs.registerHelper('currentYear', ()=> `ZooPark ${new Date().getFullYear()}`)
   // app.use(cookieParser());
   // app.use(session(sessionConfig));
 };
