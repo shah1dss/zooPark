@@ -1,8 +1,10 @@
+<script defer src="/js/admin/animals.js"></script>
+
 {{#each allAnimals}}
-<li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}</li>
+<li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}, Описание: {{description}}</li>
 {{!-- <a href="/admin/animals/{{id}}/edit" class="btn btn-primary">Редактировать</a> --}}
 {{!-- <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a> --}}
 <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-<button data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-edit="{{id}}" class="btn btn-primary"
+<button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
   type="button">Редактировать</button>
 {{/each}}

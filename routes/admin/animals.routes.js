@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const async = require('hbs/lib/async');
-// const async = require('hbs/lib/async');
-// const async = require('hbs/lib/async');
 const { Animal } = require('../../db/models');
 
 router.route('/')
@@ -39,40 +36,20 @@ router.route('/:id')
     }
   })
   .put(async (req, res) => {
-    const {
-      edit, name, photo, description,
-    } = req.body;
-    const editAnimals = await Animal.update(
-      { name, photo, description },
-      { where: { id: edit }, raw: true },
-    );
-    res.send('ошибка при изменении');
+    try {
+      const {
+        countEdit, name, photo, description,
+      } = req.body;
+      const editAnimals = await Animal.update(
+        { name, photo, description },
+        { where: { id: countEdit }, raw: true },
+      );
+      const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
+      res.render('admin/listAnimalsAdmin', { allAnimals, layout: false });
+    } catch (error) {
+      console.log(error);
+      res.send('ошибка при изменении');
+    }
   });
-
-// router.route('/:id')
-//   .delete(async (req, res) => {
-//     try {
-//       const { id } = req.params;
-//       await Animal.destroy({ where: { id } });
-//       const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
-//       res.render('admin/listAnimalsAdmin', { allAnimals, layout: false });
-//     } catch (error) {
-//       console.log(error);
-//       res.send('ошибка при удаление');
-//     }
-//   });
-
-// router.route('/:id/edit')
-//   .delete(async (req, res) => {
-//     res.render('admin/editAnimalsAdmin', { layout: false });
-//   });
-// .put(async (req, res) => {
-//   try {
-
-//   } catch (error) {
-//     console.log(error);
-//     res.send('ошибка при изменении');
-//   }
-// });
 
 module.exports = router;
