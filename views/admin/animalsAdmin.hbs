@@ -1,31 +1,76 @@
 <script defer src="/js/admin/animals.js"></script>
 
-<div class="container col-4">
-  <form id="card-form" action="/admin/animals/">
-    <div class="mb-3">
-      <label class="form-label">Название</label>
-      <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+<div class="container">
+  <div class="d-flex">
+        <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div">
+
+          {{#each allAnimals}}
+          <div class="card" style="width: 12rem;">
+            <img src="{{photo}}" class="card-img-top" alt="photo{{name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
+              <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
+              type="button">Редактировать</button>
+            </div>
+          </div>
+          {{/each}}
+
+
+        </div>
+    <div class="form__create text-center mt-3" style="width: 300px;">
+        <form id="card-form" action="/admin/animals/" class="bg-secondary text-dark p-3">
+            <div class="mb-3">
+              <label class="form-label">Название</label>
+              <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Фото</label>
+              <input type="text" name="photo" class="form-control" autocomplete="off">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Описание</label>
+              <input type="text" name="description" class="form-control" autocomplete="off">
+            </div>
+            <div id="error-div"></div>
+            <div>
+              <button type="submit" class="btn btn-dark">Добавить</button>
+        </form>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Фото</label>
-      <input type="text" name="photo" class="form-control" autocomplete="off">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Описание</label>
-      <input type="text" name="description" class="form-control" autocomplete="off">
-    </div>
-    <div id="error-div"></div>
-    <div>
-      <button type="submit" class="btn btn-primary">Добавить</button>
-  </form>
+  </div>
+
 </div>
 
-<div id="list-animals-div">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Редактирование</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
-  {{#each allAnimals}}
-  <li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}</li>
-  <a class="btn btn-primary">Редактировать</a>
-  <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a>
-  {{/each}}
+        <form id="edit-form" action="/admin/animals/">
+          <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Фото</label>
+            <input type="text" name="photo" class="form-control" autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Описание</label>
+            <input type="text" name="description" class="form-control" autocomplete="off">
+          </div>
+          <div id="error-div"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Редактировать</button>
+        </form>
 
+      </div>
+    </div>
+  </div>
 </div>
