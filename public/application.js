@@ -3,7 +3,6 @@ const weekendBtn = document.getElementById('weekend_id');
 
 weekdayBtn?.addEventListener('click', async (event) => {
   event.preventDefault();
-  console.log('YA TUT');
   const response = await fetch('/tariff/weekday');
   const container = document.getElementById('mainContainerId');
   const txt = await response.text();
@@ -11,7 +10,6 @@ weekdayBtn?.addEventListener('click', async (event) => {
 });
 
 weekendBtn.addEventListener('click', async (event) => {
-  console.log('YA TUT');
   const response = await fetch('/tariff/weekend');
   const container = document.getElementById('mainContainerId');
   const txt = await response.text();
