@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Tariff } = require('../db/models');
 
 router
-  .get('/weekday', async (req, res) => {
+  .get('/:name', async (req, res) => {
     let name = 'weekdayAdult';
 
     const tariffAdult = await Tariff.findOne({

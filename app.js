@@ -1,9 +1,10 @@
 const express = require('express');
-const req = require('express/lib/request');
+// const req = require('express/lib/request');
 const mainRoutes = require('./routes/main.routes');
 
 const adminTariffRoutes = require('./routes/admin/tariff.routes');
 const adminAnimalsRouter = require('./routes/admin/animals.routes');
+const adminPhoto = require('./routes/admin/photo.routes');
 const animalsRoutes = require('./routes/animals.routews');
 
 const tariffRouter = require('./routes/tariff.routes');
@@ -18,6 +19,7 @@ app.use('/', mainRoutes);
 app.use('/admin/tariff', adminTariffRoutes);
 app.use('/admin/animals', adminAnimalsRouter);
 app.use('/animals', animalsRoutes);
+app.use('/admin/animals/photo', adminPhoto);
 
 app.use('/tariff', tariffRouter);
 

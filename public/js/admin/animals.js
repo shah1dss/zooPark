@@ -9,7 +9,7 @@ animalsForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
     const {
-      action, name, photo, description,
+      action, name, description, photo,
     } = event.target;
 
     const response = await fetch(action, {
@@ -17,8 +17,8 @@ animalsForm?.addEventListener('submit', async (event) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name.value,
-        photo: photo.value,
         description: description.value,
+        photo: photo.value,
       }),
     });
 
@@ -28,6 +28,8 @@ animalsForm?.addEventListener('submit', async (event) => {
       errorDiv.innerHTML = '<h3> Ошибка при добавлении в БД! </h3>';
     } else if (data === 'сервер Ошибка при добавлении') {
       errorDiv.innerHTML = '<h3> сервер Ошибка при добавлении! </h3>';
+    } else if (data === 'загрузка не удалась') {
+      errorDiv.innerHTML = '<h3> загрузка не удалась </h3>';
     } else {
       errorDiv.innerHTML = '';
       listAnimals.innerHTML = data;
@@ -87,9 +89,6 @@ listAnimals.addEventListener('click', async (event) => {
         } else {
           errorDiv.innerHTML = '';
           listAnimals.innerHTML = data;
-          // name.value = '';
-          // photo.value = '';
-          // description.value = '';
         }
       } catch (error) {
         console.log(error);
