@@ -19,7 +19,6 @@ app.use('/', mainRoutes);
 app.use('/admin/tariff', adminTariffRoutes);
 app.use('/admin/animals', adminAnimalsRouter);
 app.use('/animals', animalsRoutes);
-
 app.use('/tariff', tariffRouter);
 
 app.use('/upload', filesRoutes);
