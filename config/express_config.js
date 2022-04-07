@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
-
 const { terminalInfo } = require('../middleware/terminalInfo');
 // const session = require('express-session');
 // const FileStore = require('session-file-store')(session);
@@ -28,7 +27,6 @@ module.exports = function config(app) {
   app.use(express.json());
   app.set('views', path.join(process.env.PWD, 'views'));
   hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'));
-
   hbs.registerHelper('currentYear', () => `ZooPark ${new Date().getFullYear()}`);
   app.use(express.static(path.join(process.env.PWD, 'public')));
 
