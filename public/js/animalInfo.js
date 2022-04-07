@@ -5,6 +5,7 @@ const nameDesc = document.getElementById('staticDescription');
 btnInfo.addEventListener('submit', async (event) => {
   event.preventDefault();
   const { id, action, method } = event.target;
+
   const animal_id = id.replace('animal', '');
   const responseAnimal = await fetch(`animals/getanimal/${animal_id}`);
   const resAn = await responseAnimal.json();
@@ -23,7 +24,7 @@ btnInfo.addEventListener('submit', async (event) => {
   const arrResponse = await response.json();
   // console.log(arrResponse);
   const arrLinks = arrResponse.map((el) => el.link);
-  console.log(arrLinks);
+
   document.querySelector('.modal-body').innerHTML = `<div class="container" id="mainContainerId">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" id="animal_slider">
