@@ -24,8 +24,6 @@
 
   {{#each allAnimals}}
   <li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}, Описание: {{description}}</li>
-  {{!-- <a href="/admin/animals/{{id}}/edit" class="btn btn-primary">Редактировать</a> --}}
-  {{!-- <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a> --}}
   <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
   <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
     type="button">Редактировать</button>
@@ -57,10 +55,6 @@
             <input type="text" name="description" class="form-control" autocomplete="off">
           </div>
           <div id="error-div"></div>
-          {{!-- <div> --}}
-            {{!-- <button type="submit" class="btn btn-primary">Добавить</button> --}}
-
-            {{!-- </div> --}}
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
             <button type="submit" class="btn btn-primary">Редактировать</button>
