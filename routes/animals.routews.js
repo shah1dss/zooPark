@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const res = require('express/lib/response');
 const { Animal, LinkImg } = require('../db/models');
 
 router.get('/', async (req, res) => {
@@ -38,6 +39,18 @@ router.post('/:id', async (req, res) => {
     });
   }
   res.json(linksToPhotos);
+});
+
+router.get('/getanimal/:id', async (req, res) => {
+  // console.log('tyt');
+  const { id } = req.params;
+  const animal = await Animal.findOne({
+    raw: true,
+    where: {
+      id,
+    },
+  });
+  res.send(animal)
 });
 
 module.exports = router;
