@@ -15,4 +15,3 @@ weekendBtn.addEventListener('click', async (event) => {
   const txt = await response.text();
   container.innerHTML = txt;
 });
-
