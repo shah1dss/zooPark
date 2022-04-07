@@ -1,0 +1,8 @@
+{{#each allTariff}}
+<li>name:{{name}}</li>
+<li>description:{{description}}</li>
+<li>price:{{price}}</li>
+<button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
+<button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
+  type="button">Редактировать</button>
+{{/each}}

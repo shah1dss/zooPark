@@ -1,37 +1,33 @@
-<script defer src="/js/admin/animals.js"></script>
+<script defer src="/js/admin/tariff.js"></script>
 
 <div class="container">
   <div class="d-flex">
-    <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div">
+    <div class="form__output d-flex flex-wrap flex-fill" id="list-tariff-div">
 
-      {{#each allAnimals}}
-      <div class="card" style="width: 12rem;">
-        <img src="{{photo}}" class="card-img-top" alt="photo{{name}}">
-        <div class="card-body">
-          {{!-- <input type="hidden" name="description" value="{{description}}"> --}}
-          <h5 class="card-title">{{name}}</h5>
-          <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-          <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
-            type="button">Редактировать</button>
-        </div>
-      </div>
+      {{#each allTariff}}
+      <li>name:{{name}}</li>
+      <li>description:{{description}}</li>
+      <li>price:{{price}}</li>
+      <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
+      <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
+        type="button">Редактировать</button>
       {{/each}}
 
     </div>
 
     <div class="form__create text-center mt-3">
-      <form id="animals-form" action="/admin/animals/" class="bg-secondary text-dark p-3">
+      <form id="tariff-form" action="/admin/tariff/" class="bg-secondary text-dark p-3">
         <div class="mb-3">
           <label class="form-label">Название</label>
           <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
         </div>
         <div class="mb-3">
-          <label class="form-label">Фото</label>
-          <input type="text" name="photo" class="form-control" autocomplete="off">
-        </div>
-        <div class="mb-3">
           <label class="form-label">Описание</label>
           <input type="text" name="description" class="form-control" autocomplete="off">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ценник</label>
+          <input type="text" name="price" class="form-control" autocomplete="off">
         </div>
         <div id="error-div"></div>
         <div>
@@ -52,19 +48,18 @@
       </div>
       <div class="modal-body">
 
-        <form id="edit-form-animals" action="/admin/animals/">
+        <form id="edit-form-tariff" action="/admin/tariff/">
           <div class="mb-3">
             <label class="form-label">Название</label>
-            <input type="text" value="{{name}}" name="name" class="form-control" minlength="3" autocomplete="off"
-              autofocus>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Фото</label>
-            <input type="text" name="photo" class="form-control" autocomplete="off">
+            <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
           </div>
           <div class="mb-3">
             <label class="form-label">Описание</label>
             <input type="text" name="description" class="form-control" autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ценник</label>
+            <input type="text" name="price" class="form-control" autocomplete="off">
           </div>
           <div id="error-div"></div>
           <div class="modal-footer">
