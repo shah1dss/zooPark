@@ -1,12 +1,12 @@
 <script defer src="/js/admin/animals.js"></script>
 
 <div class="container">
-  <div class="d-flex">
-        <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div">
+  <div class="d-flex mt-4">
+        <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div" style="max-width: 1000px;">
 
           {{#each allAnimals}}
           <div class="card" style="width: 12rem;">
-            <img src="{{photo}}" class="card-img-top" alt="photo{{name}}">
+            <img src="{{photo}}" class="card-img-top" style="height: 10rem;" alt="photo{{name}}">
             <div class="card-body">
               <h5 class="card-title">{{name}}</h5>
               <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
