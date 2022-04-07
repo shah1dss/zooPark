@@ -18,7 +18,6 @@ app.use('/', mainRoutes);
 app.use('/admin/tarif', adminTarifRoutes);
 app.use('/admin/animals', adminAnimalsRouter);
 app.use('/animals', animalsRoutes);
-
 app.use('/tariff', tariffRouter);
 
 app.listen(3000, () => {
