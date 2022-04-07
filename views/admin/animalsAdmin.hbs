@@ -24,8 +24,49 @@
 
   {{#each allAnimals}}
   <li>Название животного: {{name}}, Id: {{id}}, Фото: {{photo}}</li>
-  <a class="btn btn-primary">Редактировать</a>
-  <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a>
+  {{!-- <a href="/admin/animals/{{id}}/edit" class="btn btn-primary">Редактировать</a> --}}
+  {{!-- <a href="/admin/animals/{{id}}" class="btn btn-danger">Удалить</a> --}}
+  <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
+  <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-edit="{{id}}" class="btn btn-primary"
+    type="button">Редактировать</button>
   {{/each}}
 
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="edit-form" action="/admin/animals/">
+          <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" name="name" value="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Фото</label>
+            <input type="text" name="photo" class="form-control" autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Описание</label>
+            <input type="text" name="description" class="form-control" autocomplete="off">
+          </div>
+          <div id="error-div"></div>
+          {{!-- <div> --}}
+            {{!-- <button type="submit" class="btn btn-primary">Добавить</button> --}}
+
+            {{!-- </div> --}}
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Редактировать</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
 </div>
