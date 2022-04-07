@@ -1,25 +1,56 @@
 const router = require('express').Router();
+const res = require('express/lib/response');
 const { Animal, LinkImg } = require('../db/models');
 
 router.get('/', async (req, res) => {
   let animals;
-  let links;
   try {
-    animals = await Animal.findAll({ order: [['id', 'DESC']], raw: true });
-    console.log(animals);
-    links = await LinkImg.findAll({ raw: true });
-    // console.log(links);
+    animals = await Animal.findAll({ raw: true });
   } catch (error) {
     return res.json({
       message: 'Не удалось получить записи из базы данных.',
       error: {},
     });
   }
-  // console.log(links);
-  // let linkToRender;
-  // if (Lin)
-  return res.render('animal', { animals, links });
+  return res.render('animal', { animals });
 });
 
+router.post('/:id', async (req, res) => {
+  const { id } = req.params;
+  let linksToPhotos;
+  // let animal;
+  try {
+    // animal = await Animal.findOne({
+    //   where: {
+    //     id,
+    //   },
+    //   raw: true,
+    // });
+    linksToPhotos = await LinkImg.findAll({
+      where: {
+        animal_id: id,
+      },
+      raw: true,
+    });
+  } catch (error) {
+    return res.json({
+      message: 'Не удалось получить записи из базы данных.',
+      error: {},
+    });
+  }
+  res.json(linksToPhotos);
+});
+
+router.get('/getanimal/:id', async (req, res) => {
+  // console.log('tyt');
+  const { id } = req.params;
+  const animal = await Animal.findOne({
+    raw: true,
+    where: {
+      id,
+    },
+  });
+  res.send(animal)
+});
 
 module.exports = router;
