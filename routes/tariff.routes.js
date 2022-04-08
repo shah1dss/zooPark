@@ -1,27 +1,14 @@
 const router = require('express').Router();
-// const async = require('hbs/lib/async');
 const { Tariff } = require('../db/models');
 
 router
-  .get('/:name', async (req, res) => {
-    let name = 'weekdayAdult';
-
-    const tariffAdult = await Tariff.findOne({
-      where: { name },
-    });
-    name = 'weekdayChild';
-    const tariffChild = await Tariff.findOne({
-      where: { name },
-    });
-    // console.log('DESC ADULT ', await tariffAdult.description);
-    // console.log('DESC CHILD ', await tariffChild.description);
-    const head = 'Тариф буднего дня:';
-    res.render('tariff', {
-      head,
-      tariffAdult,
-      tariffChild,
-      layout: false,
-    });
+  .get('/getTariffs', async (req, res) => {
+    const tariff = await Tariff.findAll();
+    let html = '';
+    for (let i = 0; i < tariff.length; i += 1) {
+      html += `<li><a class="dropdown-item" href="/tariff/${tariff[i].id}">${tariff[i].name}</a></li>`;
+    }
+    res.send(html);
   })
   .get('/:id', async (req, res) => {
     const { id } = req.params;
@@ -38,5 +25,4 @@ router
       // layout: false,
     });
   });
-
 module.exports = router;
