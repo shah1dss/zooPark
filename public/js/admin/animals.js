@@ -5,6 +5,9 @@ const errorDiv = document.querySelector('#error-div');
 const nameInput = document.querySelector('#name-input');
 const descriptionInput = document.querySelector('#description-input');
 
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
+
 let countEdit = '';
 
 animalsForm?.addEventListener('submit', async (event) => {
@@ -48,6 +51,8 @@ listAnimals.addEventListener('click', async (event) => {
   const {
     del, edit, nam, desc,
   } = event.target.dataset;
+  console.log(nam);
+  console.log(hec);
   countEdit = edit;
   nameInput.value = nam;
   descriptionInput.value = desc;
@@ -77,7 +82,7 @@ listAnimals.addEventListener('click', async (event) => {
     editFormAnimals.addEventListener('submit', async (events) => {
       events.preventDefault();
       try {
-        const { name, photo, description } = events.target;
+        const { name, description } = events.target;
 
         const response = await fetch(`/admin/animals/${countEdit}`, {
           method: 'PUT',
@@ -85,7 +90,7 @@ listAnimals.addEventListener('click', async (event) => {
           body: JSON.stringify({
             countEdit,
             name: name.value,
-            photo: photo.value,
+            // photo: photo.value,
             description: description.value,
           }),
         });

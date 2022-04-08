@@ -6,8 +6,8 @@
     <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div" style="max-width: 1000px;">
 
       {{#each allAnimals}}
-      <div class="card" style="width: 12rem;">
-        <img src="{{photo}}" class="card-img-top" style="height: 10rem;" alt="photo{{name}}">
+      <div class="card" style="width: 18rem; margin-right: 10px;">
+        <img src="{{photo}}" class="card-img-top" style="width: 18rem; margin-right: 10px;" alt="photo{{name}}">
         <div class="card-body">
           <h5 class="card-title">{{name}}</h5>
           <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
@@ -32,7 +32,8 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Фото</label>
-          <input type="text" name="photo" class="form-control" minlength="3" autocomplete="off" autofocus>
+          <input value="https://mobimg.b-cdn.net/v3/fetch/b4/b4998cef88539ca8075898078e52ece0.jpeg" type="text"
+            name="photo" class="form-control" minlength="3" autocomplete="off" autofocus>
         </div>
         <div class="mb-3">
           <label class="form-label">Описание</label>
