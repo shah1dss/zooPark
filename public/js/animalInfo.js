@@ -54,3 +54,4 @@ btnInfo.addEventListener('submit', async (event) => {
     }
   }
 });
+
