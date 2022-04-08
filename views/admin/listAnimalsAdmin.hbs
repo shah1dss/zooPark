@@ -6,8 +6,8 @@
   <div class="card-body">
     <h5 class="card-title">{{name}}</h5>
     <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-    <button data-edit="{{id}}" data-nam="{{name}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-      class="btn btn-primary" type="button">Редактировать</button>
+    <button data-edit="{{id}}" data-nam="{{name}}" data-desc="{{description}}" data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop" class="btn btn-primary" type="button">Редактировать</button>
     <form ref='uploadForm' id='uploadForm-{{id}}' action='/admin/animals/addphoto/{{id}}' method='post'
       encType="multipart/form-data">
       <input type="file" name="sampleFile" />

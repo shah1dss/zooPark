@@ -2,6 +2,8 @@ const animalsForm = document.querySelector('#animals-form');
 const listAnimals = document.querySelector('#list-animals-div');
 const editFormAnimals = document.querySelector('#edit-form-animals');
 const errorDiv = document.querySelector('#error-div');
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
 
 const nameInput = document.querySelector('#name-input');
 const descriptionInput = document.querySelector('#description-input');
@@ -36,7 +38,6 @@ animalsForm?.addEventListener('submit', async (event) => {
     } else {
       name.value = '';
       description.value = '';
-      photo.value = '';
       errorDiv.innerHTML = '';
       listAnimals.innerHTML = data;
     }
@@ -48,13 +49,13 @@ animalsForm?.addEventListener('submit', async (event) => {
 
 listAnimals.addEventListener('click', async (event) => {
   const {
-    del, edit, nam, hec,
+    del, edit, nam, desc,
   } = event.target.dataset;
   console.log(nam);
   console.log(hec);
   countEdit = edit;
   nameInput.value = nam;
-  descriptionInput.value = hec;
+  descriptionInput.value = desc;
   if (del) {
     try {
       const response = await fetch(`/admin/animals/${del}`, {
