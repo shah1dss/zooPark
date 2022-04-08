@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-const { LinkImg } = require('../../db/models');
+const { LinkImg, Animal } = require('../../db/models');
 
 router.route('/:id')
   .post((req, res, next) => {
@@ -31,6 +31,13 @@ router.route('/:id')
     console.log('req.query =============>', req.files);
     console.log('req.query =============>', req.params);
     await LinkImg.create({ link: path.join('/img/animals', req.files.sampleFile.name), animal_id: req.params.id });
+    const animal = await Animal.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    animal.photo = path.join('/img/animals', req.files.sampleFile.name);
+    animal.save();
     res.redirect('/admin/animals');
   });
 

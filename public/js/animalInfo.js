@@ -1,21 +1,6 @@
 const btnInfo = document.querySelector('#animals');
 const nameAnimal = document.getElementById('staticBackdropLabel');
 const nameDesc = document.getElementById('staticDescription');
-const btnAddPhoto = document.querySelector('form[id*=uploadForm-]');
-
-btnAddPhoto.addEventListener('submit', async (event) => {
-  // event.preventDefault();
-  const { id, method, action } = event.target;
-  await fetch(action, {
-    method,
-    headers: {
-      'Content-Type': 'aplication/json',
-    },
-    body: JSON.stringify({
-      id,
-    }),
-  });
-});
 
 btnInfo.addEventListener('submit', async (event) => {
   event.preventDefault();
