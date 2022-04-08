@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const { Animal } = require('../../db/models');
+const sessionCheck = require('../../middleware/sessionCheck');
 
 router.route('/')
-  .get(async (req, res) => {
+  .get(sessionCheck, async (req, res) => {
     const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
-    res.render('admin/animalsAdmin', { allAnimals });
+    const isAdmin = Boolean(req.session.uid);
+    res.render('admin/animalsAdmin', { allAnimals, isAdmin });
   })
   .post(async (req, res) => {
     try {

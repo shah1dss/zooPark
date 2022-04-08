@@ -5,6 +5,8 @@ const adminTariffRoutes = require('./routes/admin/tariff.routes');
 const adminAnimalsRouter = require('./routes/admin/animals.routes');
 const animalsRoutes = require('./routes/animals.routews');
 const filesRoutes = require('./routes/admin/uploadPhoto.routes');
+const authRoutes = require('./routes/auth.routes');
+const logoutRouter = require('./routes/logout.routes');
 
 const tariffRouter = require('./routes/tariff.routes');
 
@@ -18,8 +20,10 @@ app.use('/', mainRoutes);
 app.use('/admin/tariff', adminTariffRoutes);
 app.use('/admin/animals', adminAnimalsRouter);
 app.use('/animals', animalsRoutes);
+app.use('/auth', authRoutes);
 
 app.use('/tariff', tariffRouter);
+app.use('/logout', logoutRouter);
 
 app.use('/admin/animals/addphoto', filesRoutes);
 

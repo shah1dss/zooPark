@@ -12,7 +12,8 @@ router.get('/', async (req, res) => {
       error: {},
     });
   }
-  return res.render('animal', { animals });
+  const isAdmin = Boolean(req.session.uid);
+  return res.render('animal', { animals, isAdmin });
 });
 
 router.post('/:id', async (req, res) => {

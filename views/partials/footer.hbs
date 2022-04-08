@@ -3,5 +3,53 @@
    bottom:0px;
    margin-top: -200px;
    width:100%;">
-Все права защищены © {{currentYear}} Урюпинский Зоопарк 
+  {{!-- <div id="idFooterClick">
+
+  </div> --}}
+
+  <!-- Button trigger modal -->
+  <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Все права защищены © {{currentYear}} Урюпинский Зоопарк
+  </button>
+  {{#if isAdmin}}
+  <form action="/logout">
+    <input type="submit" value="Выйти из аккаунта" id="exitDaminIDbtn">
+  </form>
+
+  {{/if}}
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Авторизация администратора</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="authAdminForm" action="/auth" method="POST">
+
+          <div class="mb-3">
+            <label class="form-label">Логин</label>
+            <input id="loginInput" type="text" value="" name="login" class="form-control" minlength="3"
+              autocomplete="off" autofocus>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Пароль</label>
+            <input type="password" name="password" class="form-control" autocomplete="off">
+          </div>
+
+          <div id="authError-div"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+
+      </div>
+      <p id="staticDescription" class="p-2"></p>
+    </div>
+  </div>
 </div>
