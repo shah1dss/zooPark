@@ -41,8 +41,11 @@ animalsForm?.addEventListener('submit', async (event) => {
 });
 
 listAnimals.addEventListener('click', async (event) => {
-  const { del, edit } = event.target.dataset;
+  const {
+    del, edit, nam, pho, desc,
+  } = event.target.dataset;
   countEdit = edit;
+  // nameInput.value = nam;
   if (del) {
     try {
       const response = await fetch(`/admin/animals/${del}`, {
