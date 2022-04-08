@@ -2,6 +2,8 @@ const animalsForm = document.querySelector('#animals-form');
 const listAnimals = document.querySelector('#list-animals-div');
 const editFormAnimals = document.querySelector('#edit-form-animals');
 const errorDiv = document.querySelector('#error-div');
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
 
 let countEdit = '';
 
@@ -31,6 +33,8 @@ animalsForm?.addEventListener('submit', async (event) => {
     } else if (data === 'загрузка не удалась') {
       errorDiv.innerHTML = '<h3> загрузка не удалась </h3>';
     } else {
+      name.value = '';
+      description.value = '';
       errorDiv.innerHTML = '';
       listAnimals.innerHTML = data;
     }
@@ -42,10 +46,11 @@ animalsForm?.addEventListener('submit', async (event) => {
 
 listAnimals.addEventListener('click', async (event) => {
   const {
-    del, edit, nam, pho, desc,
+    del, edit, nam, desc,
   } = event.target.dataset;
   countEdit = edit;
-  // nameInput.value = nam;
+  nameInput.value = nam;
+  descriptionInput.value = desc;
   if (del) {
     try {
       const response = await fetch(`/admin/animals/${del}`, {

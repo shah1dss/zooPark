@@ -11,8 +11,8 @@
         <div class="card-body">
           <h5 class="card-title">{{name}}</h5>
           <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-          <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
-            type="button">Редактировать</button>
+          <button data-edit="{{id}}" data-nam="{{name}}" data-desc="{{description}}" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop" class="btn btn-primary" type="button">Редактировать</button>
           <form ref='uploadForm' id='uploadForm-{{id}}' action='/admin/animals/addphoto/{{id}}' method='post'
             encType="multipart/form-data">
             <input type="file" name="sampleFile" />
@@ -64,12 +64,8 @@
               autocomplete="off" autofocus>
           </div>
           <div class="mb-3">
-            <label class="form-label">Фото</label>
-            <input type="text" name="photo" class="form-control" autocomplete="off">
-          </div>
-          <div class="mb-3">
             <label class="form-label">Описание</label>
-            <input type="text" name="description" class="form-control" autocomplete="off">
+            <input id="description-input" type="text" name="description" class="form-control" autocomplete="off">
           </div>
           <div id="error-div"></div>
           <div class="modal-footer">

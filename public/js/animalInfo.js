@@ -6,8 +6,8 @@ btnInfo.addEventListener('submit', async (event) => {
   event.preventDefault();
   const { id, action, method } = event.target;
 
-  const animal_id = id.replace('animal', '');
-  const responseAnimal = await fetch(`animals/getanimal/${animal_id}`);
+  const animalId = id.replace('animal', '');
+  const responseAnimal = await fetch(`animals/getanimal/${animalId}`);
   const resAn = await responseAnimal.json();
   nameAnimal.innerHTML = resAn.name;
   nameDesc.innerHTML = resAn.description;
@@ -22,7 +22,6 @@ btnInfo.addEventListener('submit', async (event) => {
     }),
   });
   const arrResponse = await response.json();
-  // console.log(arrResponse);
   const arrLinks = arrResponse.map((el) => el.link);
 
   document.querySelector('.modal-body').innerHTML = `<div class="container" id="mainContainerId">
@@ -44,7 +43,7 @@ btnInfo.addEventListener('submit', async (event) => {
   const innerSlider = document.getElementById('animal_slider');
   console.log(innerSlider);
   if (arrLinks.length > 0) {
-    for (let i = 0; i < arrLinks.length; i++) {
+    for (let i = 0; i < arrLinks.length; i += 1) {
       const slide = document.createElement('div');
       slide.className = 'carousel-item';
       slide.innerHTML = ` 
@@ -54,4 +53,3 @@ btnInfo.addEventListener('submit', async (event) => {
     }
   }
 });
-
