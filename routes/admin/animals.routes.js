@@ -8,9 +8,9 @@ router.route('/')
   })
   .post(async (req, res) => {
     try {
-      const { name, photo, description } = req.body;
+      const { name, description, photo } = req.body;
       try {
-        await Animal.create({ name, photo, description });
+        await Animal.create({ name, description, photo });
         const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
         res.render('admin/listAnimalsAdmin', { allAnimals, layout: false });
       } catch (error) {
