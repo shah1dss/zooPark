@@ -16,9 +16,6 @@ router.route('/:id')
 
     sampleFile.mv(uploadPath, (err) => {
       if (err) { return res.status(500).send(err); }
-
-      // res.send('File uploaded!');
-      // res.redirect('/admin/animals');
       next();
     });
   })

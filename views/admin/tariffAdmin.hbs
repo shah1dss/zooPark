@@ -10,14 +10,16 @@
         <div class="col bg-secondary text-center text-white">Доступные действия</div>
       </div>
       {{#each allTariff}}
-       <div class="row mt-4">
+      <div class="row mt-4">
         <div class="col text-center ">{{name}}</div>
         <div class="col text-center ">{{description}}</div>
         <div class="col text-center ">{{price}}</div>
-      <div class="col text-center">
-          <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 10rem;" class="btn btn-primary"type="button">Редактировать</button>
+        <div class="col text-center">
+          <button data-edit="{{id}}" data-nam="{{name}}" data-desc="{{description}}" data-pric="{{price}}"
+            data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 10rem;" class="btn btn-primary"
+            type="button">Редактировать</button>
           <button data-del="{{id}}" class="btn btn-danger" type="button" style="width: 10rem;">Удалить</button>
-      </div>
+        </div>
       </div>
       {{/each}}
 
@@ -37,7 +39,7 @@
           <label class="form-labe text-white">Ценник</label>
           <input type="text" name="price" class="form-control" autocomplete="off">
         </div>
-        <div id="error-div"></div>
+        <div id="error-div" class="text-danger"></div>
         <div>
           <button type="submit" class="btn btn-dark">Добавить</button>
       </form>
@@ -59,15 +61,16 @@
         <form id="edit-form-tariff" action="/admin/tariff/">
           <div class="mb-3">
             <label class="form-label">Название</label>
-            <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+            <input id="name-input" type="text" name="name" class="form-control" minlength="3" autocomplete="off"
+              autofocus>
           </div>
           <div class="mb-3">
             <label class="form-label">Описание</label>
-            <input type="text" name="description" class="form-control" autocomplete="off">
+            <input id="description-input" type="text" name="description" class="form-control" autocomplete="off">
           </div>
           <div class="mb-3">
             <label class="form-label">Ценник</label>
-            <input type="text" name="price" class="form-control" autocomplete="off">
+            <input id="price-input" type="text" name="price" class="form-control" autocomplete="off">
           </div>
           <div id="error-div"></div>
           <div class="modal-footer">

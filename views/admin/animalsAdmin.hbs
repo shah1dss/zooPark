@@ -39,7 +39,7 @@
           <label class="form-label">Описание</label>
           <input type="text" name="description" class="form-control" autocomplete="off">
         </div>
-        <div id="error-div"></div>
+
         <div>
           <button type="submit" class="btn btn-dark">Добавить</button>
       </form>
@@ -47,6 +47,7 @@
   </div>
 
 </div>
+<div id="error-div" class="text-danger"></div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -61,8 +62,8 @@
         <form id="edit-form-animals" action="/admin/animals/">
           <div class="mb-3">
             <label class="form-label">Название</label>
-            <input id="name-input" type="text" value="" name="name" class="form-control" minlength="3"
-              autocomplete="off" autofocus>
+            <input id="name-input" type="text" name="name" class="form-control" minlength="3" autocomplete="off"
+              autofocus>
           </div>
           <div class="mb-3">
             <label class="form-label">Описание</label>
