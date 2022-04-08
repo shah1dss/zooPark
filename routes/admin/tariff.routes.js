@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const { Tariff } = require('../../db/models');
+const sessionCheck = require('../../middleware/sessionCheck');
 
 router.route('/')
-  .get(async (req, res) => {
+  .get(sessionCheck, async (req, res) => {
     const allTariff = await Tariff.findAll({ order: [['createdAt', 'DESC']] });
-    res.render('admin/tariffAdmin', { allTariff });
+    const isAdmin = Boolean(req.session.uid);
+    res.render('admin/tariffAdmin', { allTariff, isAdmin });
   })
   .post(async (req, res) => {
     try {

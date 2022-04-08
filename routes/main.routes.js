@@ -1,10 +1,14 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.render('main');
+  const isAdmin = Boolean(req.session.uid);
+  console.log(isAdmin);
+
+  res.render('main', { isAdmin });
 });
 router.get('/info', (req, res) => {
-  res.render('partials/info');
+  const isAdmin = Boolean(req.session.uid);
+  res.render('partials/info', { isAdmin });
 });
 
 module.exports = router;
