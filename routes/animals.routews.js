@@ -5,7 +5,7 @@ const { Animal, LinkImg } = require('../db/models');
 router.get('/', async (req, res) => {
   let animals;
   try {
-    animals = await Animal.findAll({ raw: true });
+    animals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
   } catch (error) {
     return res.json({
       message: 'Не удалось получить записи из базы данных.',

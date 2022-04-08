@@ -5,8 +5,8 @@ const errorDiv = document.querySelector('#error-div');
 const nameInput = document.querySelector('#name-input');
 const descriptionInput = document.querySelector('#description-input');
 
-const nameInput = document.querySelector('#name-input');
-const descriptionInput = document.querySelector('#description-input');
+// const nameInput = document.querySelector('#name-input');
+// const descriptionInput = document.querySelector('#description-input');
 
 let countEdit = '';
 
@@ -51,8 +51,6 @@ listAnimals.addEventListener('click', async (event) => {
   const {
     del, edit, nam, desc,
   } = event.target.dataset;
-  console.log(nam);
-  console.log(hec);
   countEdit = edit;
   nameInput.value = nam;
   descriptionInput.value = desc;
