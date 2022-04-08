@@ -24,7 +24,7 @@ app.use('/admin/animals/photo', adminPhoto);
 
 app.use('/tariff', tariffRouter);
 
-app.use('/upload', filesRoutes);
+app.use('/admin/animals/addphoto', filesRoutes);
 
 app.listen(3000, () => {
   console.log('Server start ))');
