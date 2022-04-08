@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Animal } = require('../../db/models');
+const { Animal, LinkImg } = require('../../db/models');
 
 router.route('/')
   .get(async (req, res) => {
@@ -27,6 +27,7 @@ router.route('/:id')
   .delete(async (req, res) => {
     try {
       const { del } = req.body;
+      await LinkImg.destroy({ where: { animal_id: del } });
       await Animal.destroy({ where: { id: del } });
       const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });
       res.render('admin/listAnimalsAdmin', { allAnimals, layout: false });
@@ -38,10 +39,10 @@ router.route('/:id')
   .put(async (req, res) => {
     try {
       const {
-        countEdit, name, photo, description,
+        countEdit, name, description,
       } = req.body;
       const editAnimals = await Animal.update(
-        { name, photo, description },
+        { name, description },
         { where: { id: countEdit }, raw: true },
       );
       const allAnimals = await Animal.findAll({ order: [['createdAt', 'DESC']] });

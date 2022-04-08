@@ -3,6 +3,9 @@ const listAnimals = document.querySelector('#list-animals-div');
 const editFormAnimals = document.querySelector('#edit-form-animals');
 const errorDiv = document.querySelector('#error-div');
 
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
+
 let countEdit = '';
 
 animalsForm?.addEventListener('submit', async (event) => {
@@ -31,6 +34,9 @@ animalsForm?.addEventListener('submit', async (event) => {
     } else if (data === 'загрузка не удалась') {
       errorDiv.innerHTML = '<h3> загрузка не удалась </h3>';
     } else {
+      name.value = '';
+      description.value = '';
+      photo.value = '';
       errorDiv.innerHTML = '';
       listAnimals.innerHTML = data;
     }
@@ -42,10 +48,13 @@ animalsForm?.addEventListener('submit', async (event) => {
 
 listAnimals.addEventListener('click', async (event) => {
   const {
-    del, edit, nam, pho, desc,
+    del, edit, nam, hec,
   } = event.target.dataset;
+  console.log(nam);
+  console.log(hec);
   countEdit = edit;
-  // nameInput.value = nam;
+  nameInput.value = nam;
+  descriptionInput.value = hec;
   if (del) {
     try {
       const response = await fetch(`/admin/animals/${del}`, {
@@ -72,7 +81,7 @@ listAnimals.addEventListener('click', async (event) => {
     editFormAnimals.addEventListener('submit', async (events) => {
       events.preventDefault();
       try {
-        const { name, photo, description } = events.target;
+        const { name, description } = events.target;
 
         const response = await fetch(`/admin/animals/${countEdit}`, {
           method: 'PUT',
@@ -80,7 +89,7 @@ listAnimals.addEventListener('click', async (event) => {
           body: JSON.stringify({
             countEdit,
             name: name.value,
-            photo: photo.value,
+            // photo: photo.value,
             description: description.value,
           }),
         });

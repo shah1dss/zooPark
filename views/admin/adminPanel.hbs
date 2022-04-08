@@ -1,0 +1,36 @@
+<button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 10rem;"
+  class="btn btn-primary" type="button">Редактировать</button>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Редактирование</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="edit-form-tariff" action="/admin/tariff/">
+          <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" name="name" class="form-control" minlength="3" autocomplete="off" autofocus>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Описание</label>
+            <input type="text" name="description" class="form-control" autocomplete="off">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ценник</label>
+            <input type="text" name="price" class="form-control" autocomplete="off">
+          </div>
+          <div id="error-div"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Редактировать</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
