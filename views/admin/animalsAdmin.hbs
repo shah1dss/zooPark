@@ -7,8 +7,8 @@
 
       {{#each allAnimals}}
       <div class="card" style="width: 18rem; margin-right: 10px;">
-        <img src="{{photo}}" class="card-img-top" style="width: 18rem; margin-right: 10px;" alt="photo{{name}}">
-        <div class="card-body">
+        <img src="{{photo}}" class="card-img-top" style="width: 18rem;height: 10rem; margin-right: 10px;" alt="photo{{name}}">
+        <div class="card-body mt-3">
           <h5 class="card-title">{{name}}</h5>
           <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
           <button data-edit="{{id}}" data-nam="{{name}}" data-desc="{{description}}" data-bs-toggle="modal"
