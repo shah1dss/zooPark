@@ -2,6 +2,9 @@ const tariffForm = document.querySelector('#tariff-form');
 const listTariff = document.querySelector('#list-tariff-div');
 const editFormTariff = document.querySelector('#edit-form-tariff');
 const errorDiv = document.querySelector('#error-div');
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
+const priceInput = document.querySelector('#price-input');
 
 let countEdit = '';
 
@@ -25,20 +28,28 @@ tariffForm?.addEventListener('submit', async (event) => {
     const data = await response.text();
 
     if (data === 'сервер Ошибка при добавлении') {
-      errorDiv.innerHTML = '<h3> сервер Ошибка при добавлении! </h3>';
+      errorDiv.innerHTML = '<h5>Сервер ошибка при добавлении!</h5>';
     } else {
       errorDiv.innerHTML = '';
+      name.value = '';
+      description.value = '';
+      price.value = '';
       listTariff.innerHTML = data;
     }
   } catch (error) {
     console.log(error);
-    errorDiv.innerHTML = '<h2> клиент Ошибка при изменении! </h2>';
+    errorDiv.innerHTML = '<h5>Клиент ошибка при изменении!</h5>';
   }
 });
 
 listTariff.addEventListener('click', async (event) => {
-  const { del, edit } = event.target.dataset;
+  const {
+    del, edit, nam, desc, pric,
+  } = event.target.dataset;
   countEdit = edit;
+  nameInput.value = nam;
+  descriptionInput.value = desc;
+  priceInput.value = pric;
   if (del) {
     try {
       const response = await fetch(`/admin/tariff/${del}`, {
@@ -52,14 +63,14 @@ listTariff.addEventListener('click', async (event) => {
       const data = await response.text();
 
       if (data === 'ошибка при удаление') {
-        errorDiv.innerHTML = '<h3> сервер Ошибка при удаление! </h3>';
+        errorDiv.innerHTML = '<h5>Сервер ошибка при удаление!</h5>';
       } else {
         errorDiv.innerHTML = '';
         listTariff.innerHTML = data;
       }
     } catch (error) {
       console.log(error);
-      errorDiv.innerHTML = '<h2> клиент Ошибка при удаление! </h2>';
+      errorDiv.innerHTML = '<h5>Клиент ошибка при удаление!</h5>';
     }
   } else if (countEdit) {
     editFormTariff.addEventListener('submit', async (events) => {
@@ -81,17 +92,14 @@ listTariff.addEventListener('click', async (event) => {
         const data = await response.text();
 
         if (data === 'ошибка при изменении') {
-          errorDiv.innerHTML = '<h3> сервер Ошибка при изменении! </h3>';
+          errorDiv.innerHTML = '<h5>Сервер ошибка при изменении!</h5>';
         } else {
           errorDiv.innerHTML = '';
           listTariff.innerHTML = data;
-          // name.value = '';
-          // photo.value = '';
-          // description.value = '';
         }
       } catch (error) {
         console.log(error);
-        errorDiv.innerHTML = '<h2> клиент Ошибка при изменении! </h2>';
+        errorDiv.innerHTML = '<h5>Клиент ошибка при изменении!</h5>';
       }
     });
   }
