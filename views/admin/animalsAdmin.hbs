@@ -3,19 +3,19 @@
 <div class="container">
 
   <div class="d-flex mt-4">
-        <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div" style="max-width: 1000px;">
+    <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div" style="max-width: 1000px;">
 
-          {{#each allAnimals}}
-          <div class="card" style="width: 12rem;">
-            <img src="{{photo}}" class="card-img-top" style="height: 10rem;" alt="photo{{name}}">
-            <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-              <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
-              type="button">Редактировать</button>
-            </div>
-          </div>
-          {{/each}}
+      {{#each allAnimals}}
+      <div class="card" style="width: 12rem;">
+        <img src="{{photo}}" class="card-img-top" style="height: 10rem;" alt="photo{{name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
+          <button data-edit="{{id}}" data-nam="{{name}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            class="btn btn-primary" type="button">Редактировать</button>
+        </div>
+      </div>
+      {{/each}}
 
     </div>
 
@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Фото</label>
-          <input type="text" name="photo" class="form-control" autocomplete="off">
+          <input type="text" name="photo" class="form-control" minlength="3" autocomplete="off" autofocus>
         </div>
         <div class="mb-3">
           <label class="form-label">Описание</label>
@@ -55,8 +55,8 @@
         <form id="edit-form-animals" action="/admin/animals/">
           <div class="mb-3">
             <label class="form-label">Название</label>
-            <input type="text" value="{{name}}" name="name" class="form-control" minlength="3" autocomplete="off"
-              autofocus>
+            <input id="name-input" type="text" value="" name="name" class="form-control" minlength="3"
+              autocomplete="off" autofocus>
           </div>
           <div class="mb-3">
             <label class="form-label">Фото</label>

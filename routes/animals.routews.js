@@ -50,7 +50,7 @@ router.get('/getanimal/:id', async (req, res) => {
       id,
     },
   });
-  res.send(animal)
+  res.send(animal);
 });
 
 module.exports = router;
