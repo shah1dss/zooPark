@@ -11,7 +11,7 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Tariffs', [
       {
-        name: 'weekdayAdult',
+        name: 'Тариф выходного дня для взрослых',
         description: `Отдохните от рабочей суеты в нашем зоопарке! Цена намного ниже чем на выходных! 
        (Можно с детьми)`,
         price: 900,
@@ -19,28 +19,13 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'weekdayChild',
+        name: 'Тариф выходного дня для детей',
         description: 'Возьмите своих детей с собой в наш замечательный зоопарк! Им точно понравится!',
         price: 400,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        name: 'weekendAdult',
-        description: `В выходные у нас еще круче, чем по будням! Множество развлечений с любыми видами животных! 
-        (Включая завхоза)`,
-        price: 1500,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'weekendChild',
-        description: `Дети по выходным тоже не соскучатся! Пока родители развлекаются со страусами, дети могут потусить в зажигательной компании рыбок и пригубить детского шампанского!
-        (Все включено)`,
-        price: 1300,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+
     ]);
   },
 

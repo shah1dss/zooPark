@@ -6,13 +6,13 @@
     <div class="form__output d-flex flex-wrap flex-fill" id="list-animals-div" style="max-width: 1000px;">
 
       {{#each allAnimals}}
-      <div class="card" style="width: 12rem;">
-        <img src="{{photo}}" class="card-img-top" style="height: 10rem;" alt="photo{{name}}">
-        <div class="card-body">
+      <div class="card" style="width: 18rem; margin-right: 10px;">
+        <img src="{{photo}}" class="card-img-top" style="width: 18rem;height: 10rem; margin-right: 10px;" alt="photo{{name}}">
+        <div class="card-body mt-3">
           <h5 class="card-title">{{name}}</h5>
           <button data-del="{{id}}" class="btn btn-danger" type="button">Удалить</button>
-          <button data-edit="{{id}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary"
-            type="button">Редактировать</button>
+          <button data-edit="{{id}}" data-nam="{{name}}" data-desc="{{description}}" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop" class="btn btn-primary" type="button">Редактировать</button>
           <form ref='uploadForm' id='uploadForm-{{id}}' action='/admin/animals/addphoto/{{id}}' method='post'
             encType="multipart/form-data">
             <input type="file" name="sampleFile" />
@@ -32,13 +32,14 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Фото</label>
-          <input type="text" name="photo" class="form-control" minlength="3" autocomplete="off" autofocus>
+          <input value="https://mobimg.b-cdn.net/v3/fetch/b4/b4998cef88539ca8075898078e52ece0.jpeg" type="text"
+            name="photo" class="form-control" minlength="3" autocomplete="off" autofocus>
         </div>
         <div class="mb-3">
           <label class="form-label">Описание</label>
           <input type="text" name="description" class="form-control" autocomplete="off">
         </div>
-        <div id="error-div"></div>
+
         <div>
           <button type="submit" class="btn btn-dark">Добавить</button>
       </form>
@@ -46,6 +47,7 @@
   </div>
 
 </div>
+<div id="error-div" class="text-danger"></div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -60,16 +62,12 @@
         <form id="edit-form-animals" action="/admin/animals/">
           <div class="mb-3">
             <label class="form-label">Название</label>
-            <input id="name-input" type="text" value="" name="name" class="form-control" minlength="3"
-              autocomplete="off" autofocus>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Фото</label>
-            <input type="text" name="photo" class="form-control" autocomplete="off">
+            <input id="name-input" type="text" name="name" class="form-control" minlength="3" autocomplete="off"
+              autofocus>
           </div>
           <div class="mb-3">
             <label class="form-label">Описание</label>
-            <input type="text" name="description" class="form-control" autocomplete="off">
+            <input id="description-input" type="text" name="description" class="form-control" autocomplete="off">
           </div>
           <div id="error-div"></div>
           <div class="modal-footer">

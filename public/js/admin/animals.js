@@ -2,6 +2,8 @@ const animalsForm = document.querySelector('#animals-form');
 const listAnimals = document.querySelector('#list-animals-div');
 const editFormAnimals = document.querySelector('#edit-form-animals');
 const errorDiv = document.querySelector('#error-div');
+const nameInput = document.querySelector('#name-input');
+const descriptionInput = document.querySelector('#description-input');
 
 let countEdit = '';
 
@@ -25,27 +27,31 @@ animalsForm?.addEventListener('submit', async (event) => {
     const data = await response.text();
 
     if (data === 'ошибка при добавлении в БД') {
-      errorDiv.innerHTML = '<h3> Ошибка при добавлении в БД! </h3>';
+      errorDiv.innerHTML = '<h5>Ошибка при добавлении в базу данных!</h5>';
     } else if (data === 'сервер Ошибка при добавлении') {
-      errorDiv.innerHTML = '<h3> сервер Ошибка при добавлении! </h3>';
+      errorDiv.innerHTML = '<h5>Сервер ошибка при добавлении!</h5>';
     } else if (data === 'загрузка не удалась') {
-      errorDiv.innerHTML = '<h3> загрузка не удалась </h3>';
+      errorDiv.innerHTML = '<h5>Загрузка не удалась!</h5>';
     } else {
+      errorDiv.innerHTML = '';
+      name.value = '';
+      description.value = '';
       errorDiv.innerHTML = '';
       listAnimals.innerHTML = data;
     }
   } catch (error) {
     console.log(error);
-    errorDiv.innerHTML = '<h2> клиент Ошибка при добавлении! </h2>';
+    errorDiv.innerHTML = '<h5>Клиент ошибка при добавлении!</h5>';
   }
 });
 
 listAnimals.addEventListener('click', async (event) => {
   const {
-    del, edit, nam, pho, desc,
+    del, edit, nam, desc,
   } = event.target.dataset;
   countEdit = edit;
-  // nameInput.value = nam;
+  nameInput.value = nam;
+  descriptionInput.value = desc;
   if (del) {
     try {
       const response = await fetch(`/admin/animals/${del}`, {
@@ -59,20 +65,20 @@ listAnimals.addEventListener('click', async (event) => {
       const data = await response.text();
 
       if (data === 'ошибка при удаление') {
-        errorDiv.innerHTML = '<h3> сервер Ошибка при удаление! </h3>';
+        errorDiv.innerHTML = '<h5>Сервер ошибка при удаление!</h5>';
       } else {
         errorDiv.innerHTML = '';
         listAnimals.innerHTML = data;
       }
     } catch (error) {
       console.log(error);
-      errorDiv.innerHTML = '<h2> клиент Ошибка при удаление! </h2>';
+      errorDiv.innerHTML = '<h5>Клиент ошибка при удаление!</h5>';
     }
   } else if (countEdit) {
     editFormAnimals.addEventListener('submit', async (events) => {
       events.preventDefault();
       try {
-        const { name, photo, description } = events.target;
+        const { name, description } = events.target;
 
         const response = await fetch(`/admin/animals/${countEdit}`, {
           method: 'PUT',
@@ -80,7 +86,6 @@ listAnimals.addEventListener('click', async (event) => {
           body: JSON.stringify({
             countEdit,
             name: name.value,
-            photo: photo.value,
             description: description.value,
           }),
         });
@@ -88,14 +93,14 @@ listAnimals.addEventListener('click', async (event) => {
         const data = await response.text();
 
         if (data === 'ошибка при изменении') {
-          errorDiv.innerHTML = '<h3> сервер Ошибка при изменении! </h3>';
+          errorDiv.innerHTML = '<h5>Сервер ошибка при изменении!</h5>';
         } else {
           errorDiv.innerHTML = '';
           listAnimals.innerHTML = data;
         }
       } catch (error) {
         console.log(error);
-        errorDiv.innerHTML = '<h2> клиент Ошибка при изменении! </h2>';
+        errorDiv.innerHTML = '<h5>Клиент ошибка при изменении!</h5>';
       }
     });
   }
